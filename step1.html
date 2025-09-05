@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Select Your Business Type</title>
 
+<!-- Inline favicon (single-file) -->
+<link rel="icon" type="image/svg+xml"
+  href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234765E3'/%3E%3Ccircle cx='40' cy='36' r='16' fill='%23D5F08A'/%3E%3C/svg%3E" />
+
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +20,8 @@
     --blue-2:#6f86ff;
     --ink:#0a1020;
     --muted:#44507a;
-    --lime:#D5F08A;
     --ring:rgba(71,101,227,.28);
+    --pct:55; /* progress percent */
   }
   *{box-sizing:border-box}
   html,body{height:100%}
@@ -95,7 +99,7 @@
     box-shadow:0 0 0 8px var(--ring), 0 26px 60px rgba(71,101,227,.20);
   }
 
-  /* sheen + subtle gradient border on hover */
+  /* sheen on hover */
   .choice::before{
     content:"";
     position:absolute; inset:-40% -120% -40% -120%;
@@ -114,8 +118,7 @@
     font-size: clamp(20px, 3.6vw, 28px);
   }
   .label .pill{
-    font: inherit;
-    font-weight:700;
+    font: inherit; font-weight:700;
     display:inline-flex; align-items:center; justify-content:center;
     padding:8px 12px; border-radius:999px;
     background:linear-gradient(90deg, var(--blue), var(--blue-2));
@@ -129,7 +132,6 @@
     font-size: clamp(13px, 2.2vw, 15px);
   }
 
-  /* Decorative corner accent using brand lime */
   .accent{
     position:absolute; right:-28px; bottom:-28px;
     width:160px; height:160px; border-radius:24px;
@@ -139,7 +141,6 @@
   }
   .choice:hover .accent{ transform: translate(-6px,-6px) }
 
-  /* Tiny arrow badge */
   .arrow-badge{
     margin-left:auto;
     flex:0 0 auto;
@@ -150,6 +151,27 @@
     transition: transform .25s ease;
   }
   .choice:hover .arrow-badge{ transform: translateX(6px) }
+
+  /* Progress bar — minimal, no labels/knob, green→blue */
+  .progress-wrap{
+    width:min(100%, 980px);
+    margin-top:16px;
+    border:1px solid #e8ecfb;
+    background:rgba(255,255,255,.86);
+    backdrop-filter: blur(6px) saturate(140%);
+    border-radius:18px;
+    padding:14px;
+    box-shadow:0 22px 60px rgba(71,101,227,.10);
+  }
+  .track{
+    position:relative; height:16px; border-radius:999px; overflow:hidden;
+    background:#f2f5ff; border:1px solid #e6ecff;
+  }
+  .bar{
+    width: calc(var(--pct) * 1%); height:100%; border-radius:inherit;
+    background: linear-gradient(90deg, #E8FFEE, #4B6ACD);
+    box-shadow: 0 8px 18px rgba(71,101,227,.24);
+  }
 </style>
 </head>
 <body>
@@ -174,7 +196,7 @@
         <a class="choice" href="https://google.com" aria-label="Software or SaaS Company">
           <div class="label">
             Software / SaaS Company
-            <span class="pill">Activation & Growth</span>
+            <span class="pill">Activation &amp; Growth</span>
             <span class="arrow-badge">↗</span>
           </div>
           <p class="desc">Product-led or sales-assisted software businesses looking for traction and scale.</p>
@@ -182,6 +204,11 @@
         </a>
       </div>
     </section>
+
+    <!-- Progress (visual only; green→blue gradient, no text/knob) -->
+    <div class="progress-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="55">
+      <div class="track"><div class="bar"></div></div>
+    </div>
   </main>
 </body>
 </html>
