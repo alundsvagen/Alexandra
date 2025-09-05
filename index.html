@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Access 100% Free Resources</title>
+
+  <!-- Tiny inline favicon (no extra files) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='30%25' cy='25%25' r='60%25'%3E%3Cstop stop-color='%236f86ff'/%3E%3Cstop offset='100%25' stop-color='transparent'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%234765E3'/%3E%3Ccircle cx='38' cy='36' r='16' fill='%23D5F08A' opacity='.95'/%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)' opacity='.55'/%3E%3C/svg%3E" />
+
+  <!-- Type -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --blue:#4765E3;
+      --blue-2:#6f86ff;
+      --ink:#0a1020;
+      --muted:#3a4663;
+      --lime:#D5F08A;
+      --ring: rgba(71,101,227,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 800px at 80% -20%, #eef2ff 0%, transparent 60%),
+        radial-gradient(1000px 700px at -10% 120%, #f6fff0 0%, transparent 60%),
+        #ffffff;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:100dvh;
+      display:grid;
+      place-items:center;
+      padding:40px 20px 64px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Soft gradient orbs for depth */
+    .orb{
+      position:absolute; filter:blur(36px); opacity:.45; pointer-events:none;
+      mix-blend-mode:multiply; border-radius:50%;
+      transform:translate(-50%,-50%);
+    }
+    .orb.one{ width:700px;height:700px; left:92%; top:-6%; background:radial-gradient(circle at 30% 30%, #eaf0ff, #cdd8ff 60%, transparent 70%); }
+    .orb.two{ width:560px;height:560px; left:6%; top:88%; background:radial-gradient(circle at 60% 40%, #f0ffe2, #dff7b3 60%, transparent 70%); }
+
+    /* Card shell for a soft landing */
+    .panel{
+      width:min(100%, 1040px);
+      border:1px solid #e8ecfb;
+      background:rgba(255,255,255,.85);
+      backdrop-filter:saturate(140%) blur(8px);
+      border-radius:28px;
+      padding: clamp(22px, 5vw, 36px);
+      box-shadow: 0 30px 80px rgba(71,101,227,.12);
+      display:grid;
+      gap: clamp(20px, 4vw, 36px);
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items:center;
+    }
+    @media (max-width: 900px){ .panel{ grid-template-columns:1fr } }
+
+    /* Left column: main message */
+    .eyebrow{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:.2px;
+      color:#1c2857;
+      background:linear-gradient(120deg, #e9eeff, #f3ffe0);
+      border:1px solid #e4ebff;
+      margin-bottom:10px;
+    }
+    .title{
+      font-family:'Bricolage Grotesque', system-ui, sans-serif;
+      font-weight:800;
+      font-size: clamp(32px, 6.2vw, 56px);
+      line-height:1.06;
+      letter-spacing:-.02em;
+      margin:0 0 14px 0;
+    }
+    .lead{
+      margin:0 0 20px 0;
+      color:var(--muted);
+      font-size: clamp(15px, 1.9vw, 18px);
+    }
+
+    /* CTA: the focal action */
+    .cta{
+      --grad: radial-gradient(120% 120% at 8% 0%, var(--blue-2), transparent 45%), linear-gradient(90deg, var(--blue), var(--blue-2) 60%, #2f46a7);
+      display:inline-flex; align-items:center; gap:12px;
+      padding:16px 22px;
+      border-radius:16px;
+      color:#fff; text-decoration:none; font-weight:700; letter-spacing:.2px;
+      background: var(--grad);
+      box-shadow: 0 16px 44px rgba(71,101,227,.35);
+      position:relative; overflow:hidden; isolation:isolate;
+      transform: translateZ(0);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .cta .spark{ display:inline-block; width:28px; height:28px; border-radius:50%;
+      background: rgba(255,255,255,.18); border:1.5px solid #ffffff66; display:grid; place-items:center; }
+    .cta .arrow{ transition: transform .25s ease }
+    .cta::before{
+      content:""; position:absolute; inset:-40% -120% -40% -120%;
+      background: conic-gradient(from 180deg, transparent, rgba(255,255,255,.45), transparent 30%);
+      transform: translateX(-40%);
+      transition: transform .8s cubic-bezier(.2,.8,.2,1);
+      mix-blend-mode: overlay; pointer-events:none;
+    }
+    .cta:hover{ transform: translateY(-2px); box-shadow:0 22px 60px rgba(71,101,227,.48) }
+    .cta:hover::before{ transform: translateX(40%) }
+    .cta:hover .arrow{ transform: translateX(6px) rotate(0.001deg) }
+    .cta:focus{ outline:none; box-shadow:0 0 0 8px var(--ring), 0 16px 44px rgba(71,101,227,.35) }
+
+    /* Right column: tight, simple checklist */
+    .check{
+      list-style:none; padding:0; margin:0; display:grid; gap:12px;
+      font-size:15px; color:#2a3458;
+    }
+    .check li{ display:flex; gap:12px; align-items:flex-start; background:#ffffff; border:1px solid #eef2ff; border-radius:16px; padding:12px 14px; box-shadow:0 10px 26px rgba(71,101,227,.08) }
+    .check .tick{
+      flex:0 0 22px; height:22px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #b3c3ff, transparent 60%), linear-gradient(180deg, #7fa0ff, #4c6df5);
+      box-shadow: inset 0 0 0 2px #eef2ff, 0 3px 10px rgba(71,101,227,.25);
+      display:grid; place-items:center; color:#fff; font-size:14px; line-height:1;
+    }
+
+    /* Optional tiny helper link under CTA */
+    .help{ margin-top:10px; font-size:13px; color:#5a6590 }
+    .help a{ color:#2f46a7; text-underline-offset:3px; }
+
+    /* Subtle entrance animation for the block */
+    .fade-up{ opacity:0; transform:translateY(8px); animation:fadeUp .6s .1s both }
+    .fade-up.delay{ animation-delay:.2s }
+    @keyframes fadeUp{ to{opacity:1; transform:none} }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+
+    <div class="panel">
+      <!-- Left: headline + CTA -->
+      <div>
+        <span class="eyebrow fade-up">Q4 Growth • Tailored for You</span>
+        <h1 class="title fade-up">Access 100% free resources tailored to your situation.</h1>
+        <p class="lead fade-up">A light, no-pressure start: pick your model and get only the playbooks, frameworks, and quick wins that fit how you actually grow.</p>
+
+        <a class="cta fade-up" href="#start">
+          <span class="spark">★</span>
+          <span>Start — it’s 100% free</span>
+          <span class="arrow">↗</span>
+        </a>
+        <div class="help fade-up delay">Prefer to browse first? <a href="#overview">See what’s inside</a>.</div>
+      </div>
+
+      <!-- Right: very short benefits list -->
+      <ul class="check fade-up delay" aria-label="What you get">
+        <li><span class="tick">✓</span><span>Growth strategies matched to your business model (SaaS, Services, Marketplace, DTC).</span></li>
+        <li><span class="tick">✓</span><span>Frameworks to map buyer journeys and remove friction at each step.</span></li>
+        <li><span class="tick">✓</span><span>Practical tactics you can ship this week to turn attention into loyal customers.</span></li>
+      </ul>
+    </div>
+  </section>
+</body>
+</html>
 
