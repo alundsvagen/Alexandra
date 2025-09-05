@@ -34,6 +34,16 @@
         #ffffff;
     }
 
+    /* FULL-PAGE CLICK OVERLAY */
+    .page-link{
+      position:fixed;
+      inset:0;                 /* top:0 right:0 bottom:0 left:0 */
+      z-index:9999;            /* above everything */
+      display:block;
+      background:transparent;  /* invisible */
+      cursor:pointer;
+    }
+
     /* HERO */
     .hero{
       min-height:100dvh;
@@ -124,7 +134,7 @@
     .cta:hover .arrow{ transform: translateX(6px) rotate(0.001deg) }
     .cta:focus{ outline:none; box-shadow:0 0 0 8px var(--ring), 0 16px 44px rgba(71,101,227,.35) }
 
-    /* Right column: tight, simple checklist */
+    /* Right column: very short benefits list */
     .check{
       list-style:none; padding:0; margin:0; display:grid; gap:12px;
       font-size:15px; color:#2a3458;
@@ -137,17 +147,18 @@
       display:grid; place-items:center; color:#fff; font-size:14px; line-height:1;
     }
 
-    /* Optional tiny helper link under CTA */
     .help{ margin-top:10px; font-size:13px; color:#5a6590 }
     .help a{ color:#2f46a7; text-underline-offset:3px; }
 
-    /* Subtle entrance animation for the block */
     .fade-up{ opacity:0; transform:translateY(8px); animation:fadeUp .6s .1s both }
     .fade-up.delay{ animation-delay:.2s }
     @keyframes fadeUp{ to{opacity:1; transform:none} }
   </style>
 </head>
 <body>
+  <!-- This invisible full-screen anchor makes the WHOLE PAGE clickable -->
+  <a class="page-link" href="https://alundsvagen.github.io/Alexandra/step1.html" aria-label="Go to Step 1"></a>
+
   <section class="hero">
     <div class="orb one"></div>
     <div class="orb two"></div>
@@ -177,4 +188,3 @@
   </section>
 </body>
 </html>
-
