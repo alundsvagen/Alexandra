@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Where are you in your growth journey?</title>
+
+<!-- Inline favicon (single-file) -->
+<link rel="icon" type="image/svg+xml"
+  href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234B6ACD'/%3E%3Ccircle cx='40' cy='36' r='16' fill='%23D5F08A'/%3E%3C/svg%3E" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0b0f18;
+    --muted:#3a4154;
+    --line:#e5e7ee;
+    --line-2:#cfd4e3;
+    --blue:#4B6ACD;
+    --blue-2:#6f86ff;
+    --pct:70; /* we’re deeper in the journey */
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    background:
+      radial-gradient(1400px 900px at 90% -10%, #f7f8fb 0%, transparent 60%),
+      #ffffff;
+  }
+
+  .wrap{
+    min-height:100svh;
+    display:grid;
+    place-items:center;
+    padding: clamp(24px, 6vw, 64px) clamp(16px, 6vw, 28px);
+  }
+  .panel{
+    width:min(100%, 1120px);
+    border:1.5px solid var(--line);
+    background:#fff;
+    border-radius:28px;
+    padding: clamp(26px, 6vw, 48px);
+    box-shadow:0 30px 100px rgba(7,12,22,.08);
+  }
+
+  h1{
+    font-family:'Bricolage Grotesque',system-ui,sans-serif;
+    font-weight:800;
+    font-size: clamp(30px, 6.8vw, 60px);
+    line-height:1.04;
+    letter-spacing:-.02em;
+    margin:0 0 8px;
+  }
+  p.lead{
+    margin:0 0 28px;
+    color:#485066;
+    font-size:clamp(15px, 2.2vw, 18px);
+  }
+
+  /* BIG choices */
+  .grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap: clamp(18px, 3.5vw, 28px);
+  }
+  @media (max-width: 860px){ .grid{ grid-template-columns:1fr } }
+
+  .choice{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    background: linear-gradient(180deg,#ffffff,#fafbff);
+    border:2px solid var(--line);
+    border-radius:24px;
+    padding: clamp(26px, 4.8vw, 40px);
+    box-shadow: 0 18px 44px rgba(12,18,30,.06);
+    position:relative; overflow:hidden;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+  }
+  .choice:hover{
+    transform: translateY(-4px);
+    border-color:#0b0f18;
+    background:#fff;
+    box-shadow:0 26px 80px rgba(12,18,30,.12);
+  }
+
+  .head{
+    display:flex; gap:14px; align-items:center; margin-bottom:10px;
+  }
+  .title{
+    font-family:'Bricolage Grotesque',system-ui,sans-serif;
+    font-weight:800;
+    font-size: clamp(24px, 4.6vw, 34px);
+    letter-spacing:-.01em;
+  }
+  .badge{
+    margin-left:auto;
+    padding:8px 12px;
+    border-radius:999px;
+    font-size:12px; font-weight:700;
+    color:#fff;
+    background:linear-gradient(90deg, var(--blue), var(--blue-2));
+    box-shadow:0 10px 20px rgba(75,106,205,.35);
+    white-space:nowrap;
+  }
+  .desc{ color:var(--muted); font-size:clamp(14px,2vw,16px); margin:0 0 14px }
+
+  /* Small self-identifying chips */
+  .chips{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;
+  }
+  .chip{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 12px; border-radius:12px; background:#fff;
+    border:1.5px solid var(--line-2); color:#1b2233; font-size:13px; font-weight:600;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .chip input{appearance:none; width:14px; height:14px; border:2px solid #1b2233; border-radius:50%}
+  .chip input:checked{ background:#1b2233 }
+  .chip:has(input:checked){ border-color:#1b2233; box-shadow:0 4px 14px rgba(0,0,0,.08) }
+
+  /* Progress bar — minimal, green→blue */
+  .progress-wrap{
+    width:min(100%, 1120px);
+    margin-top:18px;
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:18px;
+    padding:16px;
+    box-shadow:0 18px 50px rgba(7,12,22,.06);
+  }
+  .track{
+    height:18px; border-radius:999px; overflow:hidden;
+    background:#eef1f7; border:1px solid var(--line);
+  }
+  .bar{
+    width: calc(var(--pct) * 1%); height:100%; border-radius:inherit;
+    background: linear-gradient(90deg, #E8FFEE 0%, #4B6ACD 100%);
+    box-shadow:0 8px 18px rgba(75,106,205,.18);
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="panel" aria-labelledby="q">
+      <h1 id="q">Where are you in your growth journey?</h1>
+      <p class="lead">Pick the track that fits your SaaS right now. We’ll tailor the playbooks from here.</p>
+
+      <div class="grid">
+        <!-- Early Traction -->
+        <a class="choice" href="https://google.com" aria-label="Early Traction">
+          <div class="head">
+            <div class="title">Early Traction</div>
+            <span class="badge">Foundations</span>
+          </div>
+          <p class="desc">Proving value, finding PMF, and getting the first reliable growth loops working.</p>
+
+          <!-- light ways to self-identify -->
+          <div class="chips" aria-label="Early traction indicators">
+            <label class="chip"><input type="checkbox" /> 0–$10k MRR</label>
+            <label class="chip"><input type="checkbox" /> Pre-PMF</label>
+            <label class="chip"><input type="checkbox" /> &lt; 100 paying users</label>
+            <label class="chip"><input type="checkbox" /> Validating ICP</label>
+            <label class="chip"><input type="checkbox" /> First activation wins</label>
+          </div>
+
+          <span class="accent" aria-hidden="true"></span>
+        </a>
+
+        <!-- Scaling Up -->
+        <a class="choice" href="https://google.com" aria-label="Scaling Up">
+          <div class="head">
+            <div class="title">Scaling Up</div>
+            <span class="badge">Acceleration</span>
+          </div>
+          <p class="desc">Tuning activation, retention, and monetization to grow faster with confidence.</p>
+
+          <div class="chips" aria-label="Scaling indicators">
+            <label class="chip"><input type="checkbox" /> $10k+ MRR</label>
+            <label class="chip"><input type="checkbox" /> Activation &amp; Aha!</label>
+            <label class="chip"><input type="checkbox" /> Sales-assist / PLG</label>
+            <label class="chip"><input type="checkbox" /> Team &gt; 5</label>
+            <label class="chip"><input type="checkbox" /> Expansion revenue</label>
+          </div>
+
+          <span class="accent" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Progress (visual only; green→blue gradient, no text/knob) -->
+    <div class="progress-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+      <div class="track"><div class="bar"></div></div>
+    </div>
+  </main>
+</body>
+</html>
