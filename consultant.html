@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>What’s your biggest growth challenge right now?</title>
+<title>Step 3B — Consulting / Service Branch</title>
 
 <!-- Inline favicon (single-file) -->
 <link rel="icon" type="image/svg+xml"
@@ -22,7 +22,7 @@
     --line-2:#cfd4e3;
     --blue:#4B6ACD;
     --blue-2:#6f86ff;
-    --pct:70; /* we’re deeper in the journey */
+    --pct:80; /* a bit further along in the journey */
   }
   *{box-sizing:border-box}
   html,body{height:100%}
@@ -112,7 +112,7 @@
   }
   .desc{ color:var(--muted); font-size:clamp(14px,2vw,16px); margin:0 0 14px }
 
-  /* Small self-identifying chips */
+  /* Self-identifying chips (optional selects) */
   .chips{
     display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;
   }
@@ -130,7 +130,7 @@
   .progress-wrap{
     width:min(100%, 1120px);
     margin-top:18px;
-    border:1px solid var(--line);
+    border:1.5px solid var(--line);
     background:#fff;
     border-radius:18px;
     padding:16px;
@@ -150,53 +150,48 @@
 <body>
   <main class="wrap">
     <section class="panel" aria-labelledby="q">
-      <h1 id="q">Where are you in your growth journey?</h1>
-      <p class="lead">Pick the track that fits your SaaS right now. We’ll tailor the playbooks from here.</p>
+      <h1 id="q">What’s your biggest growth challenge right now?</h1>
+      <p class="lead">Choose the option that best matches your consulting/service business. We’ll route you to the most relevant playbooks.</p>
 
       <div class="grid">
-        <!-- Early Traction -->
-        <a class="choice" href="https://google.com" aria-label="Early Traction">
+        <!-- No marketing strategy -->
+        <a class="choice" href="https://google.com" aria-label="We don’t have a marketing strategy">
           <div class="head">
-            <div class="title">Early Traction</div>
-            <span class="badge">Foundations</span>
+            <div class="title">We don’t have a marketing strategy</div>
+            <span class="badge">Positioning + Strategy</span>
           </div>
-          <p class="desc">Proving value, finding PMF, and getting the first reliable growth loops working.</p>
+          <p class="desc">Need positioning, messaging, and lead-gen frameworks to get a repeatable plan.</p>
 
-          <!-- light ways to self-identify -->
-          <div class="chips" aria-label="Early traction indicators">
-            <label class="chip"><input type="checkbox" /> 0–$10k MRR</label>
-            <label class="chip"><input type="checkbox" /> Pre-PMF</label>
-            <label class="chip"><input type="checkbox" /> &lt; 100 paying users</label>
-            <label class="chip"><input type="checkbox" /> Validating ICP</label>
-            <label class="chip"><input type="checkbox" /> First activation wins</label>
+          <div class="chips" aria-label="Strategy indicators">
+            <label class="chip"><input type="checkbox" /> ICP / niche unclear</label>
+            <label class="chip"><input type="checkbox" /> Weak positioning</label>
+            <label class="chip"><input type="checkbox" /> No content engine</label>
+            <label class="chip"><input type="checkbox" /> No lead magnet</label>
+            <label class="chip"><input type="checkbox" /> No campaign calendar</label>
           </div>
-
-          <span class="accent" aria-hidden="true"></span>
         </a>
 
-        <!-- Scaling Up -->
-        <a class="choice" href="https://google.com" aria-label="Scaling Up">
+        <!-- Need more consistent qualified leads -->
+        <a class="choice" href="https://google.com" aria-label="We need more consistent qualified leads">
           <div class="head">
-            <div class="title">Scaling Up</div>
-            <span class="badge">Acceleration</span>
+            <div class="title">We need more consistent qualified leads</div>
+            <span class="badge">Funnel + Conversion</span>
           </div>
-          <p class="desc">Tuning activation, retention, and monetization to grow faster with confidence.</p>
+          <p class="desc">Need funnel design, buyer-journey mapping, and conversion optimization.</p>
 
-          <div class="chips" aria-label="Scaling indicators">
-            <label class="chip"><input type="checkbox" /> $10k+ MRR</label>
-            <label class="chip"><input type="checkbox" /> Activation &amp; Aha!</label>
-            <label class="chip"><input type="checkbox" /> Sales-assist / PLG</label>
-            <label class="chip"><input type="checkbox" /> Team &gt; 5</label>
-            <label class="chip"><input type="checkbox" /> Expansion revenue</label>
+          <div class="chips" aria-label="Leads indicators">
+            <label class="chip"><input type="checkbox" /> Inconsistent pipeline</label>
+            <label class="chip"><input type="checkbox" /> Low SQO / close rate</label>
+            <label class="chip"><input type="checkbox" /> Leaky website funnel</label>
+            <label class="chip"><input type="checkbox" /> Discovery not converting</label>
+            <label class="chip"><input type="checkbox" /> Long sales cycles</label>
           </div>
-
-          <span class="accent" aria-hidden="true"></span>
         </a>
       </div>
     </section>
 
     <!-- Progress (visual only; green→blue gradient, no text/knob) -->
-    <div class="progress-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+    <div class="progress-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
       <div class="track"><div class="bar"></div></div>
     </div>
   </main>
